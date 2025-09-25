@@ -19,7 +19,8 @@
     npm run deploy
     ```
 5. 開啟 GitHub Pages到 repo → Settings → Pages  , Source 選擇 gh-pages branch → /root  
-6. 開啟網頁 (https://achawang.github.io/)
+6. 若已經有設定 Custom Domain 要再設定一次 Domain 否則自動轉只會404 Not Found
+7. 開啟網頁 (https://achawang.github.io/)
 
 ## Custom domain
 1. 專案新增一個CNAME檔案
