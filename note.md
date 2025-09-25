@@ -40,3 +40,11 @@ gh-pages -d dist
 
 使用者網站（achawang.github.io）→ vite.config.js 裡的 base 要設成 /
 專案展示網站（例如 achawang.github.io/myproject/）→ base 要設成 /myproject/  
+
+
+### 安裝 Tailwind CSS 相關套件
+```=bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+```
