@@ -14,7 +14,22 @@
 5. 開啟 GitHub Pages到 repo → Settings → Pages  , Source 選擇 gh-pages branch → /root  
 6. 開啟網頁 (https://achawang.github.io/)
 
-
+## Custom domain
+1. 專案新增一個CNAME檔案
+    ```=bash
+    me.achawang.com
+    ```
+2. 到DNS Provider 新增四條 A Record
+    ```=bash
+     me   A   185.199.108.153
+     me   A   185.199.109.153
+     me   A   185.199.110.153
+     me   A   185.199.111.153
+    ```
+3. 設定 GitHub Pages  
+進入 GitHub Repo → Settings → Pages。  
+在 Custom domain 欄位填入 me.achawang.com。  
+勾選 Enforce HTTPS（如果 Cloudflare/Let's Encrypt 憑證生成成功）。  
 ## 其他註記
 npm install gh-pages --save-dev
 
