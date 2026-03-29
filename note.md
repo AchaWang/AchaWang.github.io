@@ -2,8 +2,26 @@
 
 
 ## 流程總結（React + GitHub Pages）
+0. 安裝 nvm
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    source ~/.bashrc
+    nvm install 22
+    nvm use 22
+    node -v
+    npm -v
+    ```
 1. 用 Vite 建立 React 專案
-2. 開發時跑 npm run dev
+    ```bash
+    npm create vite@latest achawang.github.io -- --template react
+    cd achawang.github.io/
+    npm install
+    npm install gh-pages --save-dev
+    ```
+2. 開發時測試執行
+    ```bash
+    npm run dev
+    ```
 ### 打包: 
 3. 產生 dist/
     ```bash
