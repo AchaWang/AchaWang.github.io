@@ -1,7 +1,10 @@
 name: 手動觸發任務範例
-
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - test_workflows  # 只要推送到這個分支就跑
+  workflow_dispatch:    # 保留手動按鈕
+
     # 你可以定義輸入參數（選填）
     inputs:
       logLevel:
