@@ -1,0 +1,42 @@
+# 1. 檔案名稱（顯示在 GitHub 介面上）
+name: CI_Pipeline_Example
+
+# 2. 觸發時機 (Events)
+on:
+  #--------------------------------#
+  # 排程觸發
+  # schedule:
+  #   - cron: '0 3 * * *' # 每天 03:00 觸發
+
+  
+  #--------------------------------#
+  # 推送到 特定分支 : test_workflows 分支就觸發
+  push:
+    branches: [ "test_workflows" ]
+  # 手動觸發
+  workflow_dispatch:
+
+# 3. 任務內容 (Jobs)
+jobs:
+  build-and-test: # Job ID
+    runs-on: ubuntu-latest # 指定執行環境 (Runner)
+    
+    steps:
+      # 步驟 1: 下載原始碼 (使用官方 Action)
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 步驟 2: 設定執行環境（例如 Python/Node.js）
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 步驟 3: Show Python Version
+      - name: Show Python Version
+        run: |
+          python --version
+      # - name: Install dependencies & Run Test
+      #   run: |
+      #     pip install -r requirements.txt
+      #     pytest
