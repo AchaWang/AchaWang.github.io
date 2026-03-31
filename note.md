@@ -110,3 +110,53 @@ gh-pages -d dist
     </body>
     </html>
     ```
+    ---
+
+    ## github 開發佈署流程
+    * 主要有三個branch
+        * `gh-pages` 分支：只用來存放交給瀏覽器執行的打包編譯後靜態檔案（由 Vite 生成的 dist 目錄內容）。不需要、也不應該手動編輯這個分支，而是靠自動指令來更新它。
+        * `main` 分支：用來存放正式的原始碼。
+        * `dev` 分支：用來存放開發的原始碼（如 src/App.jsx、package.json 等等）。編輯與開發在這個分支上進行，再PR 到`main`
+        
+    ### 開發流程
+    1. 切換到`main`分支，create `dev` 分支
+        ```bash
+        git checkout main
+        git checkout -b dev
+        ```
+    2. 啟動本地開發環境來預覽
+        ```bash
+        npm run dev
+        ```
+        這時候會在本機的瀏覽器開啟一個 http://localhost: 開頭的網址，你可以邊改程式碼（通常是 src/ 底下的檔案）邊看即時變更結果
+    3. 開發告一段落後，把 `dev` 分支的變更合併回 `main` 分支
+        ```bash
+        git add .
+        git commit -m "Add new feature"
+        git push origin dev
+        ```
+    4. 回到 `main` 分支，把 `dev`   
+    分支的變更merge 到 `main`把`main``push到`origin/main`
+        ```bash
+        git checkout main
+        git pull origin main 
+        git merge dev
+        git push origin main
+        ```
+    
+    ### 部屬流程
+    1. 切換到`main`分支
+        ```bash
+        git checkout main
+        ```
+    2. 把`main`push到`origin/main`
+        ```bash
+        git push origin main
+        ```
+    3.  執行打包指令，把打包後的檔案（dist/）自動推送到 gh-pages 分支
+        ```bash
+        npm run deploy
+        ```
+        * 它會先自動觸發 npm run build，將所有 React 程式碼打包為純前端能懂的極致壓縮檔案，全部放在隱藏的 dist 資料夾內。
+        * 接著它會自動接手，將你剛剛產生的 dist 目錄內容，強制覆蓋推送到 Github 上的 gh-pages 分支。
+    4. 到 GitHub 專案頁面 → Settings → Pages，確認 Source 是 gh-pages 分支，如果 Custom domain 之前有設定過，記得重新設定一次，否則自動轉址會失敗。
